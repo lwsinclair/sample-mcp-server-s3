@@ -19,8 +19,21 @@ Expose AWS S3 Data through **Resources**. (think of these sort of like GET endpo
 ## Configuration
 
 ### Setting up AWS Credentials
-1. Obtain AWS access key ID, secret access key, and region from the AWS Management Console and configure credentials files using **Default** profile as shown [**here**](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html)
-2. Ensure these credentials have appropriate permission READ/WRITE  permissions for S3.
+1. Obtain AWS access key ID, secret access key, and region from the AWS Management Console and configure credentials using one of the standard AWS credentials providers:
+   - Environment variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`
+   - Shared credentials file (`~/.aws/credentials`)
+   - Named profiles (set `AWS_PROFILE` environment variable)
+   - IAM Instance Profiles (for EC2)
+   - Web Identity Token (for EKS)
+   - Assume Role (for cross-account access)
+
+2. You can specify a named AWS profile by either:
+   - Setting the `AWS_PROFILE` environment variable
+   - Uncommenting and setting the `AWS_PROFILE` line in your `.env` file
+
+3. Ensure these credentials have appropriate READ/WRITE permissions for S3.
+
+For more details, see the [AWS SDK for Python (Boto3) credentials documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
 
 ### Usage with Claude Desktop
 

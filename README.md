@@ -18,6 +18,19 @@ Expose AWS S3 Data through **Resources**. (think of these sort of like GET endpo
 
 ## Configuration
 
+### Environment Configuration
+1. Create a `.env` file in the root directory of the project by copying the provided `env.example` file:
+   ```bash
+   cp env.example .env
+   ```
+
+2. Edit the `.env` file to configure the following settings:
+   - AWS Region: `AWS_REGION=us-east-1`
+   - S3 Buckets: Either use a comma-separated list `S3_BUCKETS=bucket1,bucket2,bucket3` or individual entries `S3_BUCKET_1=mybucket1`
+   - Resource Limits: Set `S3_MAX_BUCKETS`, `S3_MAX_OBJECTS`, and `S3_MAX_CONCURRENT_BUCKETS` 
+   - Performance Settings: Configure `S3_MAX_RETRIES`, `S3_CONNECT_TIMEOUT`, and `S3_READ_TIMEOUT`
+   - Logging: Set `LOG_LEVEL` to DEBUG, INFO, WARNING, ERROR, or CRITICAL
+
 ### Setting up AWS Credentials
 1. Obtain AWS access key ID, secret access key, and region from the AWS Management Console and configure credentials using one of the standard AWS credentials providers:
    - Environment variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`
